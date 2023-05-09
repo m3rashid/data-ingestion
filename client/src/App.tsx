@@ -1,28 +1,27 @@
-import React, { Fragment } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import routes from './componenst/globals/routes';
+import type { Component } from 'solid-js';
 
-function App() {
-	return (
-		<Routes>
-			{routes.map((route) => {
-				return (
-					<Fragment>
-						<Route path={route.link} element={<route.Component {...route.props} />} />;
-						{route.nestedLinks?.map((nestedRoute) => {
-							return (
-								<Route
-									key={nestedRoute.link}
-									path={route.link + nestedRoute.link}
-									element={<nestedRoute.Component />}
-								/>
-							);
-						})}
-					</Fragment>
-				);
-			})}
-		</Routes>
-	);
-}
+import logo from './logo.svg';
+import styles from './App.module.css';
+
+const App: Component = () => {
+  return (
+    <div class={styles.App}>
+      <header class={styles.header}>
+        <img src={logo} class={styles.logo} alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          class={styles.link}
+          href="https://github.com/solidjs/solid"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn Solid
+        </a>
+      </header>
+    </div>
+  );
+};
 
 export default App;

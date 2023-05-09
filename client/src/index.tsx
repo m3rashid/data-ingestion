@@ -1,21 +1,15 @@
-import React from 'react';
-import { RecoilRoot } from 'recoil';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+/* @refresh reload */
+import { render } from 'solid-js/web';
+
 import './index.css';
 import App from './App';
-import AppLayout from './componenst/globals/layout';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = document.getElementById('root');
 
-root.render(
-	<React.StrictMode>
-		<RecoilRoot>
-			<BrowserRouter>
-				<AppLayout>
-					<App />
-				</AppLayout>
-			</BrowserRouter>
-		</RecoilRoot>
-	</React.StrictMode>
-);
+if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
+  throw new Error(
+    'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got mispelled?',
+  );
+}
+
+render(() => <App />, root!);
