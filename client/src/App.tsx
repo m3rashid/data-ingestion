@@ -1,27 +1,17 @@
-import type { Component } from 'solid-js';
+import RootLayout from './components/rootLayout';
+import InitialForm from './components/initialForm';
+import FileParserForm from './components/fileParserForm';
 
-import logo from './logo.svg';
-import styles from './App.module.css';
+const App = () => {
+	return (
+		<RootLayout>
+			<div className="p-2 md:p-4">
+				<InitialForm />
 
-const App: Component = () => {
-  return (
-    <div class={styles.App}>
-      <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
-  );
+				<FileParserForm />
+			</div>
+		</RootLayout>
+	);
 };
 
 export default App;

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const express = require('express');
 // const mongoose = require("mongoose");
 const compression = require("compression")
+const routes = require("./routes")
 const globalErrorHandlerMiddleware = require('./middlewares/error');
 
 const app = express();
@@ -31,9 +32,8 @@ app.use(
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => res.send('Hello World'));
-/**
- * other routes
- */
+app.use(routes)
+
 app.get('/health', (req, res) => {
 	const healthCheck = {
 		uptime: process.uptime(),
